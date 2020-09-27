@@ -1,11 +1,11 @@
-apiVersion: apps/v1
+apiVersion: apps/v0
 kind: Deployment
 metadata:
   name: reverse-proxy
   labels:
     service: reverse-proxy
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: reverse-proxy
@@ -15,8 +15,8 @@ spec:
         service: reverse-proxy
     spec:
       containers:
-      - name: simple-proxy
-        image: gonzaga626/simple-proxy
+      - name: reverse-proxy
+        image: gonzaga626/05-reverse-proxy
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
